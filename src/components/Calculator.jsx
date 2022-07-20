@@ -10,6 +10,7 @@ import {
   Icon,
   Image,
   Input,
+  Link,
   Select,
   Spacer,
   Stack,
@@ -19,9 +20,7 @@ import { FaGithub } from 'react-icons/fa';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 import { useState } from 'react';
 import { ResultField } from './ResultField';
-import { Circle } from "../utils/Circle";
-
-
+import { Circle } from '../utils/Circle';
 
 export function Calculator() {
   const circle = new Circle(0);
@@ -39,14 +38,13 @@ export function Calculator() {
     circle.setRadius(state.radius);
     if (state.option === 'area') {
       setState({ result: circle.getArea(), option: optionValue });
+    } else if (state.option === 'diameter') {
+      setState({ result: circle.getDiameter(), option: optionValue });
+    } else if (state.option === 'circumference') {
+      setState({ result: circle.getCircumference(), option: optionValue });
+    } else {
+      alert('Please select an option');
     }
-    else if (state.option === "diameter") {
-        setState({ result: circle.getDiameter(), option: optionValue });
-    }
-    else if (state.option === "circumference") {
-        setState({ result: circle.getCircumference(), option: optionValue });
-    }
-    else { alert("Please select an option") }
   };
 
   const handleReset = optionValue => {
@@ -134,7 +132,9 @@ export function Calculator() {
         </Stack>
         <Divider orientation="horizontal" />
         <Center>
-          <Icon as={FaGithub} boxSize={8} />
+          <Link href="https://github.com/nicomts/circle-calc">
+            <Icon as={FaGithub} boxSize={8} />
+          </Link>
         </Center>
       </Stack>
     </Flex>
