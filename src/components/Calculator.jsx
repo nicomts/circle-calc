@@ -34,7 +34,15 @@ class Circle {
   }
 
   setRadius(radiusValue) {
-    this.#radius = radiusValue;
+    if (isNaN(radiusValue)) {
+        alert("Please input a number");
+    }
+    else if (radiusValue < 0) {
+        alert("Radius can't be negative");
+    }
+    else {
+        this.#radius = radiusValue;
+    }
   }
 
   getArea() {
