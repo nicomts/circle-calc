@@ -21,26 +21,38 @@ import { useState } from 'react';
 import { ResultField } from './ResultField';
 
 class Circle {
-  radius;
-  area;
-  diameter;
-  circumference;
+  #radius;
+  #area;
+  #diameter;
+  #circumference;
 
   constructor(radius) {
-    this.radius = radius;
-    this.area = 0;
-    this.diameter = 0;
-    this.circumference = 0;
+    this.#radius = radius;
+    this.#area = 0;
+    this.#diameter = 0;
+    this.#circumference = 0;
   }
 
   setRadius(radiusValue) {
-    this.radius = radiusValue;
+    this.#radius = radiusValue;
   }
 
   getArea() {
-    this.area = Math.PI * Math.pow(this.radius, 2);
-    return this.area;
+    this.#area = Math.PI * Math.pow(this.#radius, 2);
+    return this.#area;
   }
+
+  getDiameter() {
+    this.#diameter = 2 * this.#radius;
+    return this.#diameter;
+  }
+
+  getCircumference() {
+    this.#circumference = 2 * Math.PI * this.#radius;
+    return this.#circumference;
+  }
+
+
 }
 
 export function Calculator() {
@@ -60,6 +72,13 @@ export function Calculator() {
     if (state.option === 'area') {
       setState({ result: circle.getArea(), option: optionValue });
     }
+    else if (state.option === "diameter") {
+        setState({ result: circle.getDiameter(), option: optionValue });
+    }
+    else if (state.option === "circumference") {
+        setState({ result: circle.getCircumference(), option: optionValue });
+    }
+    else { alert("Please select an option") }
   };
 
   const handleReset = optionValue => {
@@ -69,7 +88,7 @@ export function Calculator() {
       option: optionValue,
     });
   };
-  
+
   return (
     <Flex
       minH={'100vh'}
