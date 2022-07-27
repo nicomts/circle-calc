@@ -14,3 +14,10 @@ test('gets diameter of the circle', () => {
     expect(diameter).toEqual(14);
 });
 
+test('gets circumference of the circle', () => {
+    const circle = new Circle();
+    circle.setRadius(13);
+    const circumference = circle.getCircumference();
+    expect(circumference).toBeCloseTo(81.68);
+});
+
