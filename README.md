@@ -47,7 +47,6 @@ If you wish to run the project in a local environment you need [Node](https://no
 
 
 ## To do:
-- Unit tests
 - Fix bug: Option value resetting after calculation
 - Add typescript
 - Dockerize app
