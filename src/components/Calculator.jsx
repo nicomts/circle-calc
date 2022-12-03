@@ -98,7 +98,7 @@ export function Calculator() {
           <FormLabel>Radius</FormLabel>
           <Input
             placeholder="Input radius"
-            type={'text'}
+            type={'number'}
             name="radius"
             onChange={handleChange}
             value={state.radius}
